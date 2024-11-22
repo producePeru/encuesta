@@ -1,0 +1,262 @@
+body {
+        margin: 0;
+        background-image: url('imagen/FONDO.jpg'); /* Asegúrate de que la ruta esté correcta */
+        background-size: cover; /* La imagen cubre toda la pantalla */
+        background-position: center; /* Centra la imagen */
+        background-attachment: fixed; /* Fija la imagen mientras haces scroll */
+        height: 100vh; /* Ocupa toda la altura de la ventana */
+        display: flex; /* Flexbox para centrar el contenido */
+        justify-content: center; /* Centra el contenido horizontalmente */
+        align-items: center; /* Centra el contenido verticalmente */
+    }
+
+    /* El contenedor del cuestionario */
+ 
+    .encuesta-container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: flex-start;
+        width: 100%;
+        max-width: 700px; /* Limitar el ancho máximo */
+        padding: 15px;
+        background-color: rgba(255, 255, 255); /* Fondo blanco con algo de transparencia */
+        border-radius: 10px;
+        box-shadow: 0 0 15px rgba(0, 0, 0, 0.2); /* Agregar sombra para resaltar el cuestionario */
+        box-sizing: border-box;
+        margin-top: 0;
+    }
+
+    h1 {
+
+        font-size: 4rem;
+        color: #BD1823;
+        margin-bottom: 30px;
+        text-align: center; /* Asegura que el título esté centrado */
+        font-family: 'Montserrat', sans-serif;
+        font-weight: 900;
+        padding-top: 10px;
+
+    }
+
+    h2#ministerioText {
+        font-size: 1.77rem;
+    color: #BD1823; /* Mismo color que 'PRODUCE' */
+    font-family: 'Montserrat', sans-serif;
+    text-align: center;
+    font-weight: 510;
+    margin-top: -40px; /* Este valor negativo ayudará a acercarlo más */
+    margin-bottom: 20px; /* Ajusta esto si es necesario */
+}
+
+#descripcionText {
+    font-weight: 600;
+    color: #342AD8; /* Color azul */
+    font-family: 'Montserrat', sans-serif;
+    font-size: 1.2rem; /* Tamaño de la fuente */
+    text-align: center; /* Centrar el texto */
+    margin-top: 10px; /* Espacio superior */
+    max-width: 450px; /* Ancho máximo para que sea más angosto */
+    margin-left: auto; /* Centrado horizontal */
+    margin-right: auto; /* Centrado horizontal */
+    line-height: 1.5; /* Espaciado entre líneas */
+}
+
+
+    h3 {
+    color: #342AD8; /* Cambiar color de las preguntas a azul */
+    font-family: 'Montserrat', sans-serif; /* Cambiar fuente */
+    font-size: 1.5rem; /* Ajustar el tamaño de la fuente */
+    text-align: center; /* Centrado del texto */
+    font-weight: 1000;
+    margin-bottom: 15px; /* Espacio debajo de la pregunta */
+}
+
+    .btn {
+        font-weight: 650;
+        font-family: 'Montserrat', sans-serif;
+        padding: 20px 60px;
+        border-radius: 10px;
+        width: auto;
+        height: auto;
+        color: white;
+        background-color: #342AD8;
+        border-color: #F5F5DC;
+    }
+
+    .btn-primary {
+        font-weight: 650;
+        font-family: 'Montserrat', sans-serif;
+        padding: 18px 60px;
+        border-radius: 20px;
+        width: auto;
+        height: auto;
+        color: white;
+        background-color: #342AD8;
+        border-color: #F5F5DC;
+    }
+
+    .btn-primary:hover {
+        background-color: #0CBA97;
+    }
+
+    .btn-outline-primary {
+        border-color: #FFFFFF;
+        color: #007bff;
+        transition: background-color 0.3s ease;
+    }
+
+    .btn-outline-primary:hover {
+        background-color: #007bff;
+        color: white;
+    }
+
+    .btn-success {
+        padding: 18px 60px;
+        background-color: ##0CBA97;
+        border-color: #28a745;
+    }
+
+    .btn-success:hover {
+        background-color: #0CBA97;
+        border-color: #1e7e34;
+    }
+
+    .mb-3 {
+        margin-bottom: 20px;
+    }
+
+    .mt-4 {
+        margin-top: 30px;
+    }
+
+    /* Para asegurar que los botones estén dentro del contenedor */
+    .encuesta-container button {
+        margin-bottom: 20px; /* Asegura un buen espaciado entre los botones */
+    }
+
+    /* Contenedor de las opciones de la encuesta */
+.opciones-container {
+    display: flex;
+    flex-wrap: wrap; /* Para que los botones se acomoden en filas */
+    gap: 15px; /* Espacio entre los botones */
+    justify-content: center; /* Centrar los botones */
+}
+
+/* Cada opción debe ocupar el 45% del contenedor (dos botones por fila) */
+.opcion-btn {
+    background-color: #342AD8;
+    color: white;
+    flex: 0 0 45%; /* Esto hace que cada botón ocupe el 45% de la fila */
+    font-size: 1rem;
+    padding: 15px;
+    margin-bottom: 10px;
+    font-family: 'Montserrat', sans-serif;
+    padding: 18px 10px;
+    border-radius: 10px;
+    font-weight: 600;
+    display: flex; /* Flexbox para alinear íconos y texto */
+    align-items: center; /* Centra verticalmente el ícono y el texto */
+    justify-content: center; /* Alinea horizontalmente */
+}
+.opcion-btn i {
+    margin-right: 8px; /* Espacio entre el ícono y el texto */
+    font-size: 1.2rem; /* Tamaño del ícono */
+}
+
+#comenzarBtn {
+    font-size: 1.1rem;
+        font-weight: 700;
+        font-family: 'Montserrat', sans-serif;
+        padding: 20px 60px;
+        border-radius: 10px;
+        width: auto;
+        height: auto;
+        color: white;
+        background-color: #342AD8;
+        border-color: #F5F5DC;
+}
+.imagenes-container {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 20px; /* Espacio entre las imágenes y los botones de las opciones */
+    gap: 10px; /* Reducir espacio entre las imágenes */
+}
+
+.imagen {
+   width: 140px; /* Tamaño de las imágenes */
+    height: 140px; /* Tamaño de las imágenes */
+    object-fit: cover; /* Ajustar la imagen sin deformarse */
+    border-radius: 8px; /* Bordes redondeados para un estilo más suave */
+    margin: 0;
+    margin-right: -50px;
+}
+.imagenes-container img {
+    margin-right: 5px; /* Reducir margen entre las imágenes */
+}
+
+.resultado-text {
+    color: #342AD8;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 18px; /* Tamaño más pequeño */
+    font-weight: 600; /* Poner el texto en un peso más ligero */
+    text-align: center; /* Centrar el texto */
+    margin-top: 10px; /* Espacio entre el título y este texto */
+}
+
+.nivel-text {
+    color: #342AD8;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 45px; /* Tamaño de texto más grande */
+    font-weight: 900; /* Negrita */
+    text-align: center; /* Centrar el texto */
+    margin-bottom: 10px; /* Espacio por debajo del texto */
+}
+
+.imagen-container {
+    display: flex;
+    justify-content: center; /* Centrar la imagen */
+    align-items: center;
+    margin-top: 20px;
+}
+
+img {
+    max-width: 50%; /* Ajustar tamaño de la imagen */
+    height: auto; /* Mantener las proporciones */
+}
+/* Estilo para "Tu resultado según el formulario es:" */
+.resultado-texto {
+    color: #342AD8;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 18px; /* Tamaño más pequeño */
+    font-weight: 600; /* Poner el texto en un peso más ligero */
+    text-align: center; /* Centrar el texto */
+    margin-top: 10px; /* Espfont-size: 1.2rem; /* Tamaño de letra */
+}
+
+/* Estilo para la imagen del resultado */
+.resultado-imagen {
+    max-width: 35%; /* Tamaño máximo */
+    height: auto; /* Mantener proporciones */
+    display: block; /* Para centrar */
+    margin: 0 auto; /* Centrado horizontal */
+}
+
+/* Estilo para el botón "Volver al inicio" */
+.volver-boton {
+    background-color: #342AD8; /* Color de fondo */
+    color: #FFF; /* Color del texto */
+    font-family: 'Montserrat', sans-serif; /* Fuente Montserrat */
+    border: none; /* Sin bordes */
+    padding: 10px 20px; /* Espaciado interno */
+    border-radius: 5px; /* Bordes redondeados */
+    cursor: pointer; /* Cambiar cursor al pasar */
+    display: block; /* Para centrar */
+    margin: 20px auto; /* Espaciado superior y centrado horizontal */
+    text-align: center; /* Asegurar texto centrado */
+}
+
+.volver-boton:hover {
+    background-color: #281CA6; /* Oscurecer el fondo al pasar el mouse */
+}
+
