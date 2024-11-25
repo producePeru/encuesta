@@ -215,23 +215,23 @@ function enviarEncuesta() {
             'Content-Type': 'application/json',
         },
         body: JSON.stringify(data),  // Enviar los datos como JSON
-        redirect: 'manual'  // Evitar que se siga la redirección
     })
-        .then(response => {
-            if (response.redirected) {
-                console.log('Redirigido a:', response.url);
-                // Si el servidor redirige, puedes manejarlo o redirigir manualmente.
-            }
-            return response.json();  // Si la respuesta es exitosa, la procesas como JSON
-        })
-        .then(data => {
-            alert("Gracias por participar");  // Muestra el mensaje de éxito
-        })
-        .catch((error) => {
-            console.error('Error:', error);  // Muestra el error en consola si ocurre
-            alert("Hubo un error al enviar la encuesta. Intenta nuevamente.");
-        });
+    .then(response => {
+        if (!response.ok) {
+            throw new Error(`HTTP error! Status: ${response.status}`);
+        }
+        return response.json();  // Procesar la respuesta JSON si la solicitud fue exitosa
+    })
+    .then(data => {
+        // Redirigir manualmente a la URL de destino después de enviar la encuesta
+        window.location.href = 'https://programa.soporte-pnte.com/api/public/survey'; // Cambiar la URL si es necesario
+    })
+    .catch((error) => {
+        console.error('Error:', error);  // Manejo de errores
+        alert("Hubo un error al enviar la encuesta. Intenta nuevamente.");
+    });
 }
+
 
 
 function obtenerDatosDeEncuesta() {
