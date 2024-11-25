@@ -56,15 +56,15 @@ const preguntas = [
             { texto: "Efectivo", valor: 1 }
         ]
     },
-    /* {
-         pregunta: "¿Cuentas con una página web para tu negocio?",
-         opciones: [
-             { texto: "Sí", valor: 1 },
-             { texto: "No", valor: 2 },
-             { texto: "Planeo hacerlo", valor: 3 },
-             { texto: "No es necesario", valor: 4 }
-         ]
-     }*/
+   /* {
+        pregunta: "¿Cuentas con una página web para tu negocio?",
+        opciones: [
+            { texto: "Sí", valor: 1 },
+            { texto: "No", valor: 2 },
+            { texto: "Planeo hacerlo", valor: 3 },
+            { texto: "No es necesario", valor: 4 }
+        ]
+    }*/
 ];
 
 let respuestas = [];
@@ -139,18 +139,18 @@ function mostrarPregunta() {
 
 
 function mostrarResultado() {
-    // const encuestaContainer = document.getElementById("encuestaContainer");
-    // encuestaContainer.innerHTML = ''; // Limpiar contenido anterior
+    const encuestaContainer = document.getElementById("encuestaContainer");
+    encuestaContainer.innerHTML = ''; // Limpiar contenido anterior
 
-    // // Mostrar el botón "Enviar Encuesta"
-    // const submitButton = document.createElement("button");
-    // submitButton.textContent = "Enviar..... Encuestaxxxxx";
-    // submitButton.classList.add("btn", "btn-success", "mt-3");
-    // submitButton.onclick = function () {
-    //     enviarEncuesta();
-    //     mostrarImagenResultado(); // Mostrar la imagen correspondiente al presionar el botón
-    // };
-    // encuestaContainer.appendChild(submitButton);
+    // Mostrar el botón "Enviar Encuesta"
+    const submitButton = document.createElement("button");
+    submitButton.textContent = "Enviar Encuesta";
+    submitButton.classList.add("btn", "btn-success", "mt-3");
+    submitButton.onclick = function () {
+        enviarEncuesta();
+        mostrarImagenResultado(); // Mostrar la imagen correspondiente al presionar el botón
+    };
+    encuestaContainer.appendChild(submitButton);
 }
 
 // Esta función se llama al presionar "Enviar Encuesta"
@@ -175,7 +175,7 @@ function mostrarImagenResultado() {
 
     if (total < 8) {
         imagenRuta = 'imagen/normal.jpg'; // Imagen para "baja"
-    } else if (8 <= total && total < 11) {
+    } else if (8 <=total  && total < 11) {
         imagenRuta = 'imagen/bueno.jpg'; // Imagen para "media"
     } else {
         imagenRuta = 'imagen/excelente.jpg'; // Imagen para "alta"
@@ -203,14 +203,11 @@ function mostrarImagenResultado() {
 
 
 function enviarEncuesta() {
-    return alert("Enviar encuesta");
     const data = {
         answers: respuestas,  // Array con las respuestas
         total: total,         // Total calculado
         result: total < 8 ? 'Baja' : total < 11 ? 'Media' : 'Alta'  // Resultado basado en el total
     };
-
-    return console.log("Enc........................", data)
 
     fetch('https://programa.soporte-pnte.com/api/public/survey', {
         method: 'POST',
@@ -219,23 +216,14 @@ function enviarEncuesta() {
         },
         body: JSON.stringify(data),  // Enviar los datos como JSON
     })
-    .then(response => {
-        if (!response.ok) {
-            throw new Error(`HTTP error! Status: ${response.status}`);
-        }
-        return response.json();  // Procesar la respuesta JSON si la solicitud fue exitosa
-    })
+    .then(response => response.json())
     .then(data => {
-        // Redirigir manualmente a la URL de destino después de enviar la encuesta
-        window.location.href = 'https://programa.soporte-pnte.com/api/public/survey'; // Cambiar la URL si es necesario
+        alert("Gracias por participar");  // Muestra el mensaje de éxito recibido desde el servidor
     })
     .catch((error) => {
-        console.error('Error:', error);  // Manejo de errores
-        alert("Hubo un error al enviar la encuesta. Intenta nuevamente.");
+        console.error('Error:', error);  // Muestra el error en consola si ocurre
     });
 }
-
-
 
 function obtenerDatosDeEncuesta() {
 
@@ -245,21 +233,21 @@ function obtenerDatosDeEncuesta() {
             'Content-Type': 'application/json',
         }
     })
-        .then(response => {
-            if (!response.ok) {
-                throw new Error(`HTTP error! Status: ${response.status}`);
-            }
-            return response.json();
-        })
-        .then(data => {
-            const tablaBody = document.querySelector('#tabla-resultados tbody');
+    .then(response => {
+        if (!response.ok) {
+            throw new Error(`HTTP error! Status: ${response.status}`);
+        }
+        return response.json(); 
+    })
+    .then(data => {
+        const tablaBody = document.querySelector('#tabla-resultados tbody');
 
-            tablaBody.innerHTML = '';
+        tablaBody.innerHTML = '';
 
-            data.data.forEach((item, idx) => {
-                const fila = document.createElement('tr');
+        data.data.forEach((item, idx) => {
+            const fila = document.createElement('tr');
 
-                fila.innerHTML = `
+            fila.innerHTML = `
                 <td>${idx + 1}</td>
                 <td>${item.question1}</td>
                 <td>${item.question2}</td>
@@ -270,17 +258,17 @@ function obtenerDatosDeEncuesta() {
                 <td>${item.created_at}</td>
             `;
 
-                tablaBody.appendChild(fila);
-            });
-
-            // const resultado = document.getElementById('resultado');
-            // resultado.textContent = JSON.stringify(data, null, 2); 
-        })
-        .catch(error => {
-            console.error('Error:', error); // Muestra el error en consola si ocurre
-            const resultado = document.getElementById('resultado');
-            resultado.textContent = 'Ocurrió un error al obtener los datos.';
+            tablaBody.appendChild(fila);
         });
+
+        // const resultado = document.getElementById('resultado');
+        // resultado.textContent = JSON.stringify(data, null, 2); 
+    })
+    .catch(error => {
+        console.error('Error:', error); // Muestra el error en consola si ocurre
+        const resultado = document.getElementById('resultado');
+        resultado.textContent = 'Ocurrió un error al obtener los datos.';
+    });
 }
 
 
