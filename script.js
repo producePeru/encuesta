@@ -144,7 +144,7 @@ function mostrarResultado() {
 
     // Mostrar el botón "Enviar Encuesta"
     const submitButton = document.createElement("button");
-    submitButton.textContent = "Enviar Encuestaxxxxx";
+    submitButton.textContent = "Enviar..... Encuestaxxxxx";
     submitButton.classList.add("btn", "btn-success", "mt-3");
     submitButton.onclick = function () {
         enviarEncuesta();
