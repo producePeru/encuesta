@@ -56,15 +56,15 @@ const preguntas = [
             { texto: "Efectivo", valor: 1 }
         ]
     },
-   /* {
-        pregunta: "¿Cuentas con una página web para tu negocio?",
-        opciones: [
-            { texto: "Sí", valor: 1 },
-            { texto: "No", valor: 2 },
-            { texto: "Planeo hacerlo", valor: 3 },
-            { texto: "No es necesario", valor: 4 }
-        ]
-    }*/
+    /* {
+         pregunta: "¿Cuentas con una página web para tu negocio?",
+         opciones: [
+             { texto: "Sí", valor: 1 },
+             { texto: "No", valor: 2 },
+             { texto: "Planeo hacerlo", valor: 3 },
+             { texto: "No es necesario", valor: 4 }
+         ]
+     }*/
 ];
 
 let respuestas = [];
@@ -175,7 +175,7 @@ function mostrarImagenResultado() {
 
     if (total < 8) {
         imagenRuta = 'imagen/normal.jpg'; // Imagen para "baja"
-    } else if (8 <=total  && total < 11) {
+    } else if (8 <= total && total < 11) {
         imagenRuta = 'imagen/bueno.jpg'; // Imagen para "media"
     } else {
         imagenRuta = 'imagen/excelente.jpg'; // Imagen para "alta"
@@ -214,16 +214,25 @@ function enviarEncuesta() {
         headers: {
             'Content-Type': 'application/json',
         },
-        body: JSON.stringify(data)  // Enviar los datos como JSON
+        body: JSON.stringify(data),  // Enviar los datos como JSON
+        redirect: 'manual'  // Evitar que se siga la redirección
     })
-    .then(response => response.json())
-    .then(data => {
-        alert("Gracias por participar");  // Muestra el mensaje de éxito recibido desde el servidor
-    })
-    .catch((error) => {
-        console.error('Error:', error);  // Muestra el error en consola si ocurre
-    });
+        .then(response => {
+            if (response.redirected) {
+                console.log('Redirigido a:', response.url);
+                // Si el servidor redirige, puedes manejarlo o redirigir manualmente.
+            }
+            return response.json();  // Si la respuesta es exitosa, la procesas como JSON
+        })
+        .then(data => {
+            alert("Gracias por participar");  // Muestra el mensaje de éxito
+        })
+        .catch((error) => {
+            console.error('Error:', error);  // Muestra el error en consola si ocurre
+            alert("Hubo un error al enviar la encuesta. Intenta nuevamente.");
+        });
 }
+
 
 function obtenerDatosDeEncuesta() {
 
@@ -233,21 +242,21 @@ function obtenerDatosDeEncuesta() {
             'Content-Type': 'application/json',
         }
     })
-    .then(response => {
-        if (!response.ok) {
-            throw new Error(`HTTP error! Status: ${response.status}`);
-        }
-        return response.json(); 
-    })
-    .then(data => {
-        const tablaBody = document.querySelector('#tabla-resultados tbody');
+        .then(response => {
+            if (!response.ok) {
+                throw new Error(`HTTP error! Status: ${response.status}`);
+            }
+            return response.json();
+        })
+        .then(data => {
+            const tablaBody = document.querySelector('#tabla-resultados tbody');
 
-        tablaBody.innerHTML = '';
+            tablaBody.innerHTML = '';
 
-        data.data.forEach((item, idx) => {
-            const fila = document.createElement('tr');
+            data.data.forEach((item, idx) => {
+                const fila = document.createElement('tr');
 
-            fila.innerHTML = `
+                fila.innerHTML = `
                 <td>${idx + 1}</td>
                 <td>${item.question1}</td>
                 <td>${item.question2}</td>
@@ -258,17 +267,17 @@ function obtenerDatosDeEncuesta() {
                 <td>${item.created_at}</td>
             `;
 
-            tablaBody.appendChild(fila);
-        });
+                tablaBody.appendChild(fila);
+            });
 
-        // const resultado = document.getElementById('resultado');
-        // resultado.textContent = JSON.stringify(data, null, 2); 
-    })
-    .catch(error => {
-        console.error('Error:', error); // Muestra el error en consola si ocurre
-        const resultado = document.getElementById('resultado');
-        resultado.textContent = 'Ocurrió un error al obtener los datos.';
-    });
+            // const resultado = document.getElementById('resultado');
+            // resultado.textContent = JSON.stringify(data, null, 2); 
+        })
+        .catch(error => {
+            console.error('Error:', error); // Muestra el error en consola si ocurre
+            const resultado = document.getElementById('resultado');
+            resultado.textContent = 'Ocurrió un error al obtener los datos.';
+        });
 }
 
 
@@ -283,7 +292,7 @@ pregunta.opciones.forEach((opcion) => {
 
     // Agregar el ícono dentro del botón al lado del texto
     const icon = document.createElement("i");
-    icon.classList.add("fas", "fa-check-circle"); // El ícono que deseas usar (puedes cambiarlo)
+    icon.classList.add("fas", "fa-check-circle");
 
     // Crear un contenedor para el texto
     const textoOpcion = document.createElement("span");
@@ -298,7 +307,7 @@ pregunta.opciones.forEach((opcion) => {
 
     button.onclick = function () {
         respuestas[currentQuestion] = opcion.valor;
-        total += opcion.valor;6
+        total += opcion.valor;
         currentQuestion++;
         mostrarPregunta();
     };
