@@ -209,7 +209,7 @@ function enviarEncuesta() {
         result: total < 8 ? 'Baja' : total < 11 ? 'Media' : 'Alta'  // Resultado basado en el total
     };
 
-    fetch('http://127.0.0.1:8000/api/public/survey', {
+    fetch('https://programa.soporte-pnte.com/api/public/survey', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',
@@ -227,7 +227,7 @@ function enviarEncuesta() {
 
 function obtenerDatosDeEncuesta() {
 
-    fetch('http://127.0.0.1:8000/api/public/surveys', {
+    fetch('https://programa.soporte-pnte.com/api/public/surveys', {
         method: 'GET',
         headers: {
             'Content-Type': 'application/json',
