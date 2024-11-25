@@ -203,13 +203,14 @@ function mostrarImagenResultado() {
 
 
 function enviarEncuesta() {
+    return alert("Enviar encuesta");
     const data = {
         answers: respuestas,  // Array con las respuestas
         total: total,         // Total calculado
         result: total < 8 ? 'Baja' : total < 11 ? 'Media' : 'Alta'  // Resultado basado en el total
     };
 
-    return console.log("Enc", data)
+    return console.log("Enc........................", data)
 
     fetch('https://programa.soporte-pnte.com/api/public/survey', {
         method: 'POST',
