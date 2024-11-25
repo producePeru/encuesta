@@ -139,18 +139,18 @@ function mostrarPregunta() {
 
 
 function mostrarResultado() {
-    const encuestaContainer = document.getElementById("encuestaContainer");
-    encuestaContainer.innerHTML = ''; // Limpiar contenido anterior
+    // const encuestaContainer = document.getElementById("encuestaContainer");
+    // encuestaContainer.innerHTML = ''; // Limpiar contenido anterior
 
-    // Mostrar el botón "Enviar Encuesta"
-    const submitButton = document.createElement("button");
-    submitButton.textContent = "Enviar..... Encuestaxxxxx";
-    submitButton.classList.add("btn", "btn-success", "mt-3");
-    submitButton.onclick = function () {
-        enviarEncuesta();
-        mostrarImagenResultado(); // Mostrar la imagen correspondiente al presionar el botón
-    };
-    encuestaContainer.appendChild(submitButton);
+    // // Mostrar el botón "Enviar Encuesta"
+    // const submitButton = document.createElement("button");
+    // submitButton.textContent = "Enviar..... Encuestaxxxxx";
+    // submitButton.classList.add("btn", "btn-success", "mt-3");
+    // submitButton.onclick = function () {
+    //     enviarEncuesta();
+    //     mostrarImagenResultado(); // Mostrar la imagen correspondiente al presionar el botón
+    // };
+    // encuestaContainer.appendChild(submitButton);
 }
 
 // Esta función se llama al presionar "Enviar Encuesta"
