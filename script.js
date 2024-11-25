@@ -209,9 +209,7 @@ function enviarEncuesta() {
         result: total < 8 ? 'Baja' : total < 11 ? 'Media' : 'Alta'  // Resultado basado en el total
     };
 
-    console.log(data);  // Verifica en consola si los datos se están enviando correctamente
-
-    fetch('/submit', {
+    fetch('http://127.0.0.1:8000/api/public/survey', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',
@@ -220,10 +218,56 @@ function enviarEncuesta() {
     })
     .then(response => response.json())
     .then(data => {
-        alert(data.message);  // Muestra el mensaje de éxito recibido desde el servidor
+        alert("Gracias por participar");  // Muestra el mensaje de éxito recibido desde el servidor
     })
     .catch((error) => {
         console.error('Error:', error);  // Muestra el error en consola si ocurre
+    });
+}
+
+function obtenerDatosDeEncuesta() {
+
+    fetch('http://127.0.0.1:8000/api/public/surveys', {
+        method: 'GET',
+        headers: {
+            'Content-Type': 'application/json',
+        }
+    })
+    .then(response => {
+        if (!response.ok) {
+            throw new Error(`HTTP error! Status: ${response.status}`);
+        }
+        return response.json(); 
+    })
+    .then(data => {
+        const tablaBody = document.querySelector('#tabla-resultados tbody');
+
+        tablaBody.innerHTML = '';
+
+        data.data.forEach((item, idx) => {
+            const fila = document.createElement('tr');
+
+            fila.innerHTML = `
+                <td>${idx + 1}</td>
+                <td>${item.question1}</td>
+                <td>${item.question2}</td>
+                <td>${item.question3}</td>
+                <td>${item.question4}</td>
+                <td>${item.total}</td>
+                <td>${item.status}</td>
+                <td>${item.created_at}</td>
+            `;
+
+            tablaBody.appendChild(fila);
+        });
+
+        // const resultado = document.getElementById('resultado');
+        // resultado.textContent = JSON.stringify(data, null, 2); 
+    })
+    .catch(error => {
+        console.error('Error:', error); // Muestra el error en consola si ocurre
+        const resultado = document.getElementById('resultado');
+        resultado.textContent = 'Ocurrió un error al obtener los datos.';
     });
 }
 
