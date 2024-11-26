@@ -209,7 +209,7 @@ function enviarEncuesta() {
         result: total < 8 ? 'Baja' : total < 11 ? 'Media' : 'Alta'  // Resultado basado en el total
     };
 
-    fetch('https://programa.soporte-pnte.com/api/public/survey', {
+    fetch('https://apituempresa.soporte-pnte.com/api/public/survey', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',
