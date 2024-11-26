@@ -226,8 +226,7 @@ function enviarEncuesta() {
 }
 
 function obtenerDatosDeEncuesta() {
-
-    fetch('https://programa.soporte-pnte.com/api/public/surveys', {
+    fetch('https://apituempresa.soporte-pnte.com/api/public/surveys', {
         method: 'GET',
         headers: {
             'Content-Type': 'application/json',
