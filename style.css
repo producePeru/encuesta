@@ -227,7 +227,8 @@ h3 {
 }
 
 .imagen {
-    width: 140px;
+    width: 22%;
+    max-width: 140px;
     /* Tamaño de las imágenes */
     height: 140px;
     /* Tamaño de las imágenes */
