@@ -142,6 +142,18 @@ function mostrarResultado() {
     const encuestaContainer = document.getElementById("encuestaContainer");
     encuestaContainer.innerHTML = ''; // Limpiar contenido anterior
 
+      // Crear y mostrar el texto "Gracias"
+    const graciasText = document.createElement("h2");
+    graciasText.textContent = "¡ Gracias !";
+    graciasText.classList.add("thanks-text"); // Puedes agregar una clase para estilos personalizados
+    encuestaContainer.appendChild(graciasText);
+
+    // Crear y mostrar el mensaje adicional
+    const mensajeText = document.createElement("p");
+    mensajeText.textContent = "Tu colaboración es clave para seguir mejorando. ¡Sigamos creciendo juntos!";
+    mensajeText.classList.add("mensaje-text"); // Puedes agregar una clase para estilos personalizados
+    encuestaContainer.appendChild(mensajeText);
+
     // Mostrar el botón "Enviar Encuesta"
     const submitButton = document.createElement("button");
     submitButton.textContent = "Enviar Encuesta";

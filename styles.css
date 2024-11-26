@@ -260,3 +260,20 @@ img {
     background-color: #281CA6; /* Oscurecer el fondo al pasar el mouse */
 }
 
+.thanks-text {
+    color: #342AD8; /* El color que usas para los enunciados */
+     font-weight: 900;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 3rem; /* Tamaño adecuado para el título */
+    text-align: center;
+    margin-top: 20px; /* Espacio superior */
+}
+
+.mensaje-text {
+    color: #342AD8;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 1.2rem;
+    text-align: center;
+    margin-top: 10px;
+    line-height: 1.5; /* Espaciado entre líneas */
+}
