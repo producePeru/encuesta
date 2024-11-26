@@ -52,7 +52,7 @@ const preguntas = [
         opciones: [
             { texto: "Billeteras digitales (Yape, Plin, BIM, otros)", valor: 4 },
             { texto: "Transferencias bancarias", valor: 2 },
-            { texto: "P.O.S (Niubiz, Visa, Izipay, otros", valor: 3 },
+            { texto: "P.O.S (Niubiz, Visa, Izipay, otros)", valor: 3 },
             { texto: "Efectivo", valor: 1 }
         ]
     },
@@ -157,7 +157,7 @@ function mostrarResultado() {
     // Mostrar el botón "Enviar Encuesta"
     const submitButton = document.createElement("button");
     submitButton.textContent = "Enviar Encuesta.";
-    submitButton.classList.add("btn", "btn-success", "mt-3");
+    submitButton.classList.add("btn", "btn-success", "mt-3", "btn-final");
     submitButton.onclick = function () {
         enviarEncuesta();
         mostrarImagenResultado(); // Mostrar la imagen correspondiente al presionar el botón
@@ -221,17 +221,20 @@ function enviarEncuesta() {
         result: total < 8 ? 'Baja' : total < 11 ? 'Media' : 'Alta'  // Resultado basado en el total
     };
 
-    fetch('https://apituempresa.soporte-pnte.com/api/public/survey', {
+
+    //    https://apituempresa.soporte-pnte.com/api
+
+    fetch('http://127.0.0.1:8000/api/public/survey', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',
         },
         body: JSON.stringify(data),  // Enviar los datos como JSON
     })
-    .then(response => response.json())
-    .then(data => {
-        alert("Gracias por participar");  // Muestra el mensaje de éxito recibido desde el servidor
+    .then(response => {
+        console.log("response", response);
     })
+
     .catch((error) => {
         console.error('Error:', error);  // Muestra el error en consola si ocurre
     });
