@@ -83,7 +83,7 @@ body {
         background-color: #342AD8;
         border-color: #F5F5DC;
         display: block;
-        margin: 0px 210px;
+        margin: 0px 205px;
     }
 
     .btn-primary {
@@ -272,7 +272,7 @@ img {
     font-family: 'Montserrat', sans-serif;
     font-size: 3rem; /* Tamaño adecuado para el título */
     text-align: center;
-    margin-top: 20px; /* Espacio superior */
+    margin-top: 21px; /* Espacio superior */
 }
 
 .mensaje-text {
@@ -280,6 +280,6 @@ img {
     font-family: 'Montserrat', sans-serif;
     font-size: 1.2rem;
     text-align: center;
-    margin-top: 10px;
+    margin-top: 11px;
     line-height: 1.5; /* Espaciado entre líneas */
 }
