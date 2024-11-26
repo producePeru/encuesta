@@ -222,9 +222,9 @@ function enviarEncuesta() {
     };
 
 
-    //    https://apituempresa.soporte-pnte.com/api
+    //    https://apituempresa.soporte-pnte.com/api   http://127.0.0.1:8000/api/public/survey
 
-    fetch('http://127.0.0.1:8000/api/public/survey', {
+    fetch('https://apituempresa.soporte-pnte.com/api/public/survey', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',
